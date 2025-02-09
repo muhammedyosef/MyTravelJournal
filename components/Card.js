@@ -1,11 +1,14 @@
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
-const Card = ({ title, description, image, onPress, style, textStyle }) => {
+const Card = ({ title, image, onPress, style, textStyle }) => {
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={[styles.card, style]}>
-        <Image source={{ uri: image }} style={styles.image} />
+        <Image
+          source={{ uri: image }}
+          style={styles.image}
+          testID="card-image"
+        />
         <Text style={[styles.title, textStyle]}>{title}</Text>
-        <Text style={[styles.description, textStyle]}>{description}</Text>
       </View>
     </TouchableOpacity>
   );

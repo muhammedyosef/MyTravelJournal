@@ -36,7 +36,13 @@ const HomeScreen = ({ navigation }) => {
   const allDestinations = [...userDestinations, ...destinationsApi];
 
   if (loading) {
-    return <ActivityIndicator size="large" color="#0000ff" />;
+    return (
+      <ActivityIndicator
+        size="large"
+        color="#0000ff"
+        testID="loading-indicator"
+      />
+    );
   }
   if (error) {
     return <Text>Error: {error.message}</Text>;

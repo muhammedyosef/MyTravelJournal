@@ -1,4 +1,4 @@
-import { View, TextInput, StyleSheet, Image, Text } from "react-native";
+import { View, TextInput, StyleSheet, Image, Text, Alert } from "react-native";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import Button from "../components/Button";
@@ -10,6 +10,7 @@ import { ThemeContext } from "../store/context/ThemContext";
 const validationSchema = Yup.object().shape({
   title: Yup.string().required("Title is required"),
   description: Yup.string().required("Description is required"),
+  //   image: Yup.string().required("Image URI is required"),
 });
 const AddDestinationScreen = ({ navigation }) => {
   const [image, setImage] = useState(null);
@@ -51,6 +52,8 @@ const AddDestinationScreen = ({ navigation }) => {
         initialValues={{ title: "", description: "" }}
         validationSchema={validationSchema}
         onSubmit={(values) => {
+          console.log("Form values:", values);
+          console.log("Image:", image);
           addDestination({ ...values, image });
           navigation.goBack();
         }}
